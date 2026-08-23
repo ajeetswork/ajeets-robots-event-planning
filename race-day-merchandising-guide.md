@@ -31,3 +31,8 @@ Adirondack Marathon – Marathon/Half, Sept, variable mountain weather.
 - Cold/rain: push Soft Shell Jacket + Hooded Sweatshirt to front
 - Warm/sunny: push Women's Tee + Leather Patch Hat + Woven Straw Tote
 - Variable mountain weather (Adirondack Marathon): lead with Soft Shell Jacket, keep Hooded Sweatshirt as upsell
+
+## Related
+
+- Content calendar: `ajeets-robots-content/product-content-rotation-calendar.md`
+- Catalog: `ajeets-robots-catalog/catalog-snapshot-2026-08-23.md`
