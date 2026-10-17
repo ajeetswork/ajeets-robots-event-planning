@@ -1,0 +1,19 @@
+name: Nightly checkout end-to-end
+on:
+  schedule:
+    - cron: "20 5 * * *"
+  workflow_dispatch:
+jobs:
+  nightly-checkout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run full browser checkout matrix
+        run: bash scripts/ci/nightly-checkout-e2e.sh
+      - name: Retain browser results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkout-e2e-results
+          path: artifacts/checkout-e2e/
