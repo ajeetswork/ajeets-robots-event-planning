@@ -1,0 +1,20 @@
+name: Package event kit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "event-kit/**"
+      - "scripts/ci/build-event-kit.sh"
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build event kit bundle
+        run: bash scripts/ci/build-event-kit.sh
+      - name: Upload bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: event-kit
+          path: dist/event-kit.tar.gz
