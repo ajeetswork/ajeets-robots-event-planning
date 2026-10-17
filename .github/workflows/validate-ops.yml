@@ -1,0 +1,14 @@
+name: Operations validation
+on:
+  pull_request:
+    paths:
+      - "config/**"
+      - "scripts/ci/validate-config.sh"
+jobs:
+  schema-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate event configuration
+        run: bash scripts/ci/validate-config.sh
