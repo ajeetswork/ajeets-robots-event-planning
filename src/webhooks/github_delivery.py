@@ -1,4 +1,3 @@
-import json
 import os
 
 from flask import Blueprint, Response, request
@@ -14,13 +13,13 @@ def enqueue_repository_sync(repository: str, delivery_id: str) -> None:
 
 @github_webhooks.post("/webhooks/github")
 def github_delivery_webhook():
-    raw_body = request.get_data(cache=False)
+    raw_body = request.get_data()
     signature = request.headers.get("X-Hub-Signature-256", "")
     secret = os.environ.get("GITHUB_WEBHOOK_SECRET", "")
     if not verify_github_signature(raw_body, signature, secret):
         return Response(status=401)
 
-    event = json.loads(raw_body) if raw_body else {}
+    event = request.get_json(force=True)
     event_name = request.headers.get("X-GitHub-Event", "")
     delivery_id = request.headers.get("X-GitHub-Delivery", "")
 
